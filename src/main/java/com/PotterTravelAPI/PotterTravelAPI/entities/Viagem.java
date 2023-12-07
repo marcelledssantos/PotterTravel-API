@@ -1,21 +1,26 @@
 package com.PotterTravelAPI.PotterTravelAPI.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
 @Entity
-@Table(name = "viagens")
 public class Viagem {
+
+    @Getter
     @Id
     @GeneratedValue
     private Long id;
 
+    @Column(name = "viagem_name", nullable = false)
+    private String name;
+
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @JoinColumn(name="cliente_id", nullable=false)
     private Cliente cliente;
+
 
     private String origem;
 
@@ -29,26 +34,36 @@ public class Viagem {
 
     private String hotel;
 
-    public Viagem() {}
+    private double valorPacote;
 
-    public Viagem(Long id, Cliente cliente, String origem, String destino, String data,
-                  String horario, String ciaAerea, String hotel) {
-        this.id = id;
-        this.cliente = cliente;
-        this.origem = origem;
-        this.destino = destino;
-        this.data = data;
-        this.horario = horario;
-        this.ciaAerea = ciaAerea;
-        this.hotel = hotel;
+    public double getValorPacote() {
+        return valorPacote;
     }
 
-    public Long getId() {
-        return id;
+    public void setValorPacote(double valorPacote) {
+        this.valorPacote = valorPacote;
     }
+
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
+    private String formaPagamento;
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Cliente getCliente() {

@@ -16,5 +16,4 @@ public interface ViagemService {
 
     void deleteById(Long id);
 
-    void addRelationship(Long clienteId, Long viagemId);
 }
