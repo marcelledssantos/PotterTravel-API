@@ -17,7 +17,7 @@ public class Cliente {
     private String cpf;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     private Set<Viagem> viagens;
     private String telefone;
     private String email;

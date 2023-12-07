@@ -26,13 +26,13 @@ public class ViagemServiceImpl implements ViagemService {
 
     @Override
     public Viagem saveViagem(Viagem viagem) {
+        System.out.println("oi");
         return viagemRepository.save(viagem);
     }
 
     @Override
     public Viagem updateViagem(Long id, Viagem viagemUpdated) {
         Viagem viagemCadastrada = getViagemById(id);
-        viagemCadastrada.setName(viagemCadastrada.getName());
         return viagemRepository.save(viagemCadastrada);
     }
 

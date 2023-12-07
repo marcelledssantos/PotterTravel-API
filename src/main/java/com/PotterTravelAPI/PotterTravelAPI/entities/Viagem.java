@@ -4,8 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @Entity
+@Table(name = "viagens")
 public class Viagem {
 
     @Getter
@@ -13,20 +17,15 @@ public class Viagem {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "viagem_name", nullable = false)
-    private String name;
-
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="cliente_id", nullable=false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
 
     private String origem;
 
     private String destino;
 
-    private String data;
+    private LocalDate data;
 
     private String horario;
 
@@ -34,15 +33,36 @@ public class Viagem {
 
     private String hotel;
 
-    private double valorPacote;
 
-    public double getValorPacote() {
-        return valorPacote;
+
+    public Viagem() {
     }
 
-    public void setValorPacote(double valorPacote) {
-        this.valorPacote = valorPacote;
+    public Viagem(Long id, Cliente cliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, String formaPagamento) {
+        this.id = id;
+        this.cliente = cliente;
+        this.origem = origem;
+        this.destino = destino;
+        this.data = data;
+        this.horario = horario;
+        this.ciaAerea = ciaAerea;
+        this.hotel = hotel;
+        this.formaPagamento = formaPagamento;
     }
+
+    public Viagem(Cliente cliente, String origem, String destino, LocalDate data,String horario, String ciaAerea, String hotel,String formaPagamento) {
+
+        this.cliente = cliente;
+        this.origem = origem;
+        this.destino = destino;
+        this.data = data;
+        this.horario = horario;
+        this.ciaAerea = ciaAerea;
+        this.hotel = hotel;
+        this.formaPagamento = formaPagamento;
+    }
+
+
 
     public String getFormaPagamento() {
         return formaPagamento;
@@ -56,14 +76,6 @@ public class Viagem {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Cliente getCliente() {
@@ -90,13 +102,11 @@ public class Viagem {
         this.destino = destino;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
+    public void setData(LocalDate data) { this.data = data;}
 
     public String getHorario() {
         return horario;
