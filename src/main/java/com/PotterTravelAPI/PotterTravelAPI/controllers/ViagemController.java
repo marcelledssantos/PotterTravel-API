@@ -15,7 +15,7 @@ public class ViagemController {
     @Autowired
     private ViagemService viagemService;
 
-    @PostMapping("/saveviagem")
+    @PostMapping("/save")
     public Viagem createViagem(@RequestBody Viagem viagem) {
         return viagemService.saveViagem(viagem);
     }

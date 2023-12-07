@@ -17,12 +17,12 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @PostMapping("/savecliente")
+    @PostMapping("/save")
     public Cliente createCliente(@RequestBody Cliente cliente) {
         return clienteService.saveCliente(cliente);
     }
 
-    @GetMapping("/allclientes")
+    @GetMapping("/all")
     public List<Cliente> getAllClientes() {
 
         return clienteService.getAllClientes();

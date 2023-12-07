@@ -5,6 +5,7 @@ import com.PotterTravelAPI.PotterTravelAPI.entities.Cliente;
 import java.util.List;
 
 public interface ClienteService {
+
     List<Cliente> getAllClientes();
     Cliente getClienteById(Long id);
     Cliente saveCliente(Cliente cliente);

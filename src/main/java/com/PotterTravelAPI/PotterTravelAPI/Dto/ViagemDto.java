@@ -34,8 +34,9 @@ public class ViagemDto {
         this.hotel = hotel;
     }
 
-    public ViagemDto(String origem, String destino, LocalDate data, LocalDateTime horario, String ciaAerea, String hotel) {
-
+    public ViagemDto(Cliente cliente, String origem, String destino, LocalDate data, LocalDateTime horario,
+                     String ciaAerea, String hotel) {
+        this.cliente = cliente;
         this.origem = origem;
         this.destino = destino;
         this.data = data;
