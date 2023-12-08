@@ -32,6 +32,19 @@ public class ViagemController {
        Viagem viagem = viagemService.getViagemById(id);
         return ResponseEntity.ok(viagem);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Viagem> updateViagem(@PathVariable Long id, @RequestBody Viagem viagemUpdated) {
+       Viagem viagem = viagemService.getViagemById(id);
+        viagem.setId(viagemUpdated.getId());
+        viagemService.saveViagem(viagem);
+        return ResponseEntity.ok(viagem);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteViagem(@PathVariable Long id) {
+        viagemService.deleteById(id);
+    }
 }
 
 
