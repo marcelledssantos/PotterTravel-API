@@ -25,7 +25,6 @@ public class ViagemController {
 
     @GetMapping("/all")
     public List<Viagem> getAllViagem() {
-
         return viagemService.getAllViagens();
     }
     @GetMapping("/{id}")
