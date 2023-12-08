@@ -19,6 +19,8 @@ public class Viagem {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
+
+
     private Cliente cliente;
 
     private String origem;
@@ -34,11 +36,10 @@ public class Viagem {
     private String hotel;
 
 
-
     public Viagem() {
     }
 
-    public Viagem(Long id, Cliente cliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, String formaPagamento) {
+    public Viagem(Long id, Cliente cliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
         this.id = id;
         this.cliente = cliente;
         this.origem = origem;
@@ -47,10 +48,9 @@ public class Viagem {
         this.horario = horario;
         this.ciaAerea = ciaAerea;
         this.hotel = hotel;
-        this.formaPagamento = formaPagamento;
     }
 
-    public Viagem(Cliente cliente, String origem, String destino, LocalDate data,String horario, String ciaAerea, String hotel,String formaPagamento) {
+    public Viagem(Cliente cliente, String origem, String destino, LocalDate data,String horario, String ciaAerea, String hotel) {
 
         this.cliente = cliente;
         this.origem = origem;
@@ -59,20 +59,7 @@ public class Viagem {
         this.horario = horario;
         this.ciaAerea = ciaAerea;
         this.hotel = hotel;
-        this.formaPagamento = formaPagamento;
     }
-
-
-
-    public String getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-
-    private String formaPagamento;
 
     public void setId(Long id) {
         this.id = id;

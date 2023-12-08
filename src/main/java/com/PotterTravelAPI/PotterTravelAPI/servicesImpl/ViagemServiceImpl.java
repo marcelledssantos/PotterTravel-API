@@ -1,8 +1,11 @@
 package com.PotterTravelAPI.PotterTravelAPI.servicesImpl;
 
+import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
+import com.PotterTravelAPI.PotterTravelAPI.config.ModelMapperConfig;
 import com.PotterTravelAPI.PotterTravelAPI.entities.Viagem;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ViagemRepository;
 import com.PotterTravelAPI.PotterTravelAPI.services.ViagemService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +14,16 @@ import java.util.List;
 @Service
 public class ViagemServiceImpl implements ViagemService {
 
+    @Getter
+    @Autowired
+    private ModelMapperConfig modelMapper;
+
     @Autowired
     private ViagemRepository viagemRepository;
+
+    @Getter
+    @Autowired
+    private ClienteDto clienteDto;
 
     @Override
     public List<Viagem> getAllViagens() {
@@ -34,9 +45,9 @@ public class ViagemServiceImpl implements ViagemService {
         Viagem viagemCadastrada = getViagemById(id);
         return viagemRepository.save(viagemCadastrada);
     }
-
     @Override
     public void deleteById(Long id) {
         viagemRepository.deleteById(id);
     }
+
 }
