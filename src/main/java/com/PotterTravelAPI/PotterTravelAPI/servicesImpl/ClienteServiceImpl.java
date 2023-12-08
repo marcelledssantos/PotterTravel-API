@@ -33,7 +33,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente updateCliente(Long id, Cliente clienteUpdated) {
         Cliente clienteCadastrado = getClienteById(id);
-      clienteCadastrado.setNome(clienteUpdated.getNome());
+        clienteCadastrado.setNome(clienteUpdated.getNome());
         return clienteRepository.save(clienteCadastrado);
     }
 

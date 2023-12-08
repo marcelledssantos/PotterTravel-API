@@ -17,7 +17,7 @@ public class Viagem {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
