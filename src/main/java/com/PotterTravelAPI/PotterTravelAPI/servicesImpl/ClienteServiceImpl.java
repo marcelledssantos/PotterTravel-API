@@ -4,12 +4,14 @@ import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ClienteRepository;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
+import jakarta.persistence.Id;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -29,11 +31,12 @@ public class ClienteServiceImpl implements ClienteService {
     private Cliente paraCliente(ClienteDto clienteDto) {
         return mapper.map(clienteDto, Cliente.class);
     }
-
-
+    
     @Override
-    public List<Cliente> getAllClientes() {
-        return clienteRepository.findAll();
+    public List<ClienteDto> getAllClientesDto() {
+        return clienteRepository.findAll().stream()
+                .map(this::paraDto)
+                .collect(Collectors.toList());
     }
 
     @Override

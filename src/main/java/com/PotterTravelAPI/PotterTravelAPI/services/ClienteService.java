@@ -6,7 +6,7 @@ import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
 import java.util.List;
 
 public interface ClienteService {
-    List<Cliente> getAllClientes();
+    List<ClienteDto> getAllClientesDto();
     Cliente getClienteById(Long id);
     ClienteDto saveCliente(ClienteDto clienteDto);
     Cliente updateCliente(Long id, Cliente clienteUpdated);

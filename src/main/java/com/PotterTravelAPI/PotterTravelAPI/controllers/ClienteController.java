@@ -4,9 +4,7 @@ import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +16,17 @@ import java.util.List;
 
 public class ClienteController {
 
+    @Autowired
     private ClienteService clienteService;
 
-    @PostMapping("/save")
+    @PostMapping()
     public ClienteDto createCliente(@RequestBody ClienteDto clienteDto) {
         return clienteService.saveCliente(clienteDto);
     }
 
-    @GetMapping("/all")
-    public List<Cliente> getAllClientes() {
-
-        return clienteService.getAllClientes();
+    @GetMapping()
+    public List<ClienteDto> getAllClientes() {
+        return clienteService.getAllClientesDto();
     }
 
     @GetMapping("/{id}")
@@ -40,7 +38,7 @@ public class ClienteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> updateCliente(@PathVariable Long id, @RequestBody ClienteDto clienteUpdated) {
-       Cliente cliente = clienteService.getClienteById(id);
+        Cliente cliente = clienteService.getClienteById(id);
 
         //cliente.setNome(clienteUpdated.getNome());
 
@@ -50,14 +48,8 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCliente(@PathVariable Long id) {
+    public void deleteById(@PathVariable Long id) {
         clienteService.deleteById(id);
     }
-
-    @Autowired
-    public void setClienteService(ClienteService clienteService) {
-        this.clienteService = clienteService;
-    }
-
 }
 
