@@ -1,6 +1,6 @@
 package com.PotterTravelAPI.PotterTravelAPI.services;
 
-import com.PotterTravelAPI.PotterTravelAPI.entities.Viagem;
+import com.PotterTravelAPI.PotterTravelAPI.model.Viagem;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.PotterTravelAPI.PotterTravelAPI.servicesImpl;
 
 import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.config.ModelMapperConfig;
-import com.PotterTravelAPI.PotterTravelAPI.entities.Viagem;
+import com.PotterTravelAPI.PotterTravelAPI.model.Viagem;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ViagemRepository;
 import com.PotterTravelAPI.PotterTravelAPI.services.ViagemService;
 import lombok.Getter;
@@ -20,10 +20,6 @@ public class ViagemServiceImpl implements ViagemService {
 
     @Autowired
     private ViagemRepository viagemRepository;
-
-    @Getter
-    @Autowired
-    private ClienteDto clienteDto;
 
     @Override
     public List<Viagem> getAllViagens() {

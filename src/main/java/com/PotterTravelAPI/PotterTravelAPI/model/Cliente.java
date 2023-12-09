@@ -1,7 +1,9 @@
-package com.PotterTravelAPI.PotterTravelAPI.entities;
+package com.PotterTravelAPI.PotterTravelAPI.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Set;
 

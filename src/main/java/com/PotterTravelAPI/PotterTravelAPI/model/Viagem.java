@@ -1,11 +1,9 @@
-package com.PotterTravelAPI.PotterTravelAPI.entities;
+package com.PotterTravelAPI.PotterTravelAPI.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Entity

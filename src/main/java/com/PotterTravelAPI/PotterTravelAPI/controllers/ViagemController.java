@@ -1,7 +1,6 @@
 package com.PotterTravelAPI.PotterTravelAPI.controllers;
 
-import com.PotterTravelAPI.PotterTravelAPI.entities.Cliente;
-import com.PotterTravelAPI.PotterTravelAPI.entities.Viagem;
+import com.PotterTravelAPI.PotterTravelAPI.model.Viagem;
 import com.PotterTravelAPI.PotterTravelAPI.services.ViagemService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;

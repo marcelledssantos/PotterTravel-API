@@ -1,9 +1,12 @@
 package com.PotterTravelAPI.PotterTravelAPI.controllers;
 
-import com.PotterTravelAPI.PotterTravelAPI.entities.Cliente;
+import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
+import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,14 +15,14 @@ import java.util.List;
 @Tag(name = "Clientes", description = "CRUD")
 @RestController
 @RequestMapping("/clientes")
+
 public class ClienteController {
 
-    @Autowired
     private ClienteService clienteService;
 
     @PostMapping("/save")
-    public Cliente createCliente(@RequestBody Cliente cliente) {
-        return clienteService.saveCliente(cliente);
+    public ClienteDto createCliente(@RequestBody ClienteDto clienteDto) {
+        return clienteService.saveCliente(clienteDto);
     }
 
     @GetMapping("/all")
@@ -36,12 +39,12 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> updateCliente(@PathVariable Long id, @RequestBody Cliente clienteUpdated) {
+    public ResponseEntity<Cliente> updateCliente(@PathVariable Long id, @RequestBody ClienteDto clienteUpdated) {
        Cliente cliente = clienteService.getClienteById(id);
 
-        cliente.setNome(clienteUpdated.getNome());
+        //cliente.setNome(clienteUpdated.getNome());
 
-        clienteService.saveCliente(cliente);
+        //clienteService.saveCliente(clienteDto);
 
         return ResponseEntity.ok(cliente);
     }
@@ -50,4 +53,11 @@ public class ClienteController {
     public void deleteCliente(@PathVariable Long id) {
         clienteService.deleteById(id);
     }
+
+    @Autowired
+    public void setClienteService(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
+
 }
+
