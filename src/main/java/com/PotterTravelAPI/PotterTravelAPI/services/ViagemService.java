@@ -13,7 +13,7 @@ public interface ViagemService {
 
     ViagemDto saveViagem(ViagemDto viagemDto);
 
-    Viagem updateViagem(Long id, Viagem viagemUpdated);
+    ViagemDto updateViagem(Long id, ViagemDto viagemDtoUpdated);
 
     void deleteById(Long id);
 
