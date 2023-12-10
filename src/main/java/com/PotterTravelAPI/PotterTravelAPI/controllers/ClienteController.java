@@ -2,6 +2,9 @@ package com.PotterTravelAPI.PotterTravelAPI.controllers;
 
 import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

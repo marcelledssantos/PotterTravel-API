@@ -1,13 +1,17 @@
 package com.PotterTravelAPI.PotterTravelAPI.Dto;
 
+
+
 import com.PotterTravelAPI.PotterTravelAPI.models.Cliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
 
 public class ViagemDto {
 
+    @JsonIgnore
     private Long id;
-    private ClienteDto cliente;
+    private Cliente cliente;
 
     private String origem;
 
@@ -34,7 +38,7 @@ public class ViagemDto {
         this.hotel = hotel;
     }
 
-    public ViagemDto(ClienteDto cliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
+    public ViagemDto(Cliente cliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
         this.cliente = cliente;
         this.origem = origem;
         this.destino = destino;

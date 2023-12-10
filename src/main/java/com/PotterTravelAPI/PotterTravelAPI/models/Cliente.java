@@ -11,12 +11,13 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String nome;
     @Column (unique = true)
     private String cpf;
 
-    @JsonIgnore
+  
     @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     private Set<Viagem> viagens;
     private String telefone;

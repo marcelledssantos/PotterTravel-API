@@ -1,8 +1,10 @@
 package com.PotterTravelAPI.PotterTravelAPI.Dto;
 
 
-public class ClienteDto {
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+public class ClienteDto {
+    @JsonIgnore
     private Long id;
     private String nome;
 
