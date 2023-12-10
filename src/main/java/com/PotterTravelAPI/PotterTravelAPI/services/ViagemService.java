@@ -9,7 +9,7 @@ public interface ViagemService {
 
     List<Viagem> getAllViagens();
 
-    Viagem getViagemById(Long id);
+    ViagemDto getViagemById(Long id);
 
     ViagemDto saveViagem(ViagemDto viagemDto);
 

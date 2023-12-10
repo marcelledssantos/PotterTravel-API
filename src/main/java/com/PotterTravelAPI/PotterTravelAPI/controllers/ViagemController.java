@@ -1,5 +1,6 @@
 package com.PotterTravelAPI.PotterTravelAPI.controllers;
 
+import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.Dto.ViagemDto;
 import com.PotterTravelAPI.PotterTravelAPI.models.Viagem;
 import com.PotterTravelAPI.PotterTravelAPI.services.ViagemService;
@@ -31,9 +32,9 @@ public class ViagemController {
         return viagemService.getAllViagens();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Viagem> getViagemById(@PathVariable Long id) {
-       Viagem viagem = viagemService.getViagemById(id);
-        return ResponseEntity.ok(viagem);
+    public ResponseEntity<ViagemDto> getViagemById(@PathVariable Long id) {
+        ViagemDto viagemDto = viagemService.getViagemById(id);
+        return ResponseEntity.ok(viagemDto);
     }
 
     /*@PutMapping("/{id}")

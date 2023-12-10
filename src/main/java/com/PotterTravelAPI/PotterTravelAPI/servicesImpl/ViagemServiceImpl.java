@@ -38,8 +38,10 @@ public class ViagemServiceImpl implements ViagemService {
     }
 
     @Override
-    public Viagem getViagemById(Long id) {
-        return viagemRepository.findById(id).orElseThrow(() -> new RuntimeException("ID: " + id + "Não encontrado!"));
+    public ViagemDto getViagemById(Long id) {
+        return viagemRepository.findById(id)
+                .map(this::paraDto)
+                .orElseThrow(() -> new RuntimeException("ID: " + id + "Não encontrado!"));
     }
 
     @Override
@@ -51,9 +53,14 @@ public class ViagemServiceImpl implements ViagemService {
 
     @Override
     public Viagem updateViagem(Long id, Viagem viagemUpdated) {
+        return null;
+    }
+
+    /*@Override
+    public Viagem updateViagem(Long id, Viagem viagemUpdated) {
         Viagem viagemCadastrada = getViagemById(id);
         return viagemRepository.save(viagemCadastrada);
-    }
+    }*/
 
     @Override
     public void deleteById(Long id) {
