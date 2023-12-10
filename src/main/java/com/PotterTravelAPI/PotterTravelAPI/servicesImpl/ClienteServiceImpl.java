@@ -4,10 +4,8 @@ import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ClienteRepository;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
-import jakarta.persistence.Id;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +29,7 @@ public class ClienteServiceImpl implements ClienteService {
     private Cliente paraCliente(ClienteDto clienteDto) {
         return mapper.map(clienteDto, Cliente.class);
     }
-    
+
     @Override
     public List<ClienteDto> getAllClientesDto() {
         return clienteRepository.findAll().stream()
@@ -40,8 +38,10 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente getClienteById(Long id) {
-        return clienteRepository.findById(id).orElseThrow(() -> new RuntimeException("ID: " + id + "Não encontrado!"));
+    public ClienteDto getClienteById(Long id) {
+        return clienteRepository.findById(id)
+                .map(this::paraDto)
+                .orElseThrow(() -> new RuntimeException("ID: " + id + "Não encontrado!"));
     }
 
     @Override
@@ -52,10 +52,15 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente updateCliente(Long id, Cliente clienteUpdated) {
-        Cliente clienteCadastrado = getClienteById(id);
-        clienteCadastrado.setNome(clienteUpdated.getNome());
-        return clienteRepository.save(clienteCadastrado);
+    public ClienteDto updateCliente(Long id, ClienteDto clienteDto) {
+
+        Cliente clienteExistente = clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ID: " + id + "Não encontrado!"));
+        Cliente clienteParaAtualizar = paraCliente(clienteDto);
+        clienteExistente.setNome(clienteParaAtualizar.getNome());
+        clienteExistente.setEmail(clienteParaAtualizar.getEmail());
+        Cliente clienteAtualizado = clienteRepository.save(clienteExistente);
+        return paraDto(clienteAtualizado);
     }
 
     @Override
