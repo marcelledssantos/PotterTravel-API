@@ -1,8 +1,4 @@
-package com.PotterTravelAPI.PotterTravelAPI.DTO;
-
-
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+package com.PotterTravelAPI.PotterTravelAPI.Dto;
 
 
 public class ClienteDto {

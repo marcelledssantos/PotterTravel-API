@@ -1,4 +1,4 @@
-package com.PotterTravelAPI.PotterTravelAPI.model;
+package com.PotterTravelAPI.PotterTravelAPI.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;

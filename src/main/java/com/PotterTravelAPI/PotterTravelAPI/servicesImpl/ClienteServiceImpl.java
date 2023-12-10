@@ -1,7 +1,7 @@
 package com.PotterTravelAPI.PotterTravelAPI.servicesImpl;
 
-import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
-import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
+import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
+import com.PotterTravelAPI.PotterTravelAPI.models.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ClienteRepository;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
 import org.modelmapper.ModelMapper;

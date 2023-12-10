@@ -1,6 +1,7 @@
 package com.PotterTravelAPI.PotterTravelAPI.services;
 
-import com.PotterTravelAPI.PotterTravelAPI.model.Viagem;
+import com.PotterTravelAPI.PotterTravelAPI.Dto.ViagemDto;
+import com.PotterTravelAPI.PotterTravelAPI.models.Viagem;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface ViagemService {
 
     Viagem getViagemById(Long id);
 
-    Viagem saveViagem(Viagem viagem);
+    ViagemDto saveViagem(ViagemDto viagemDto);
 
     Viagem updateViagem(Long id, Viagem viagemUpdated);
 

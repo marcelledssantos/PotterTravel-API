@@ -1,7 +1,6 @@
 package com.PotterTravelAPI.PotterTravelAPI.services;
 
-import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
-import com.PotterTravelAPI.PotterTravelAPI.model.Cliente;
+import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
 
 import java.util.List;
 

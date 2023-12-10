@@ -1,6 +1,6 @@
 package com.PotterTravelAPI.PotterTravelAPI.controllers;
 
-import com.PotterTravelAPI.PotterTravelAPI.DTO.ClienteDto;
+import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
