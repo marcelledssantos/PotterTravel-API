@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ViagemServiceImpl implements ViagemService {
@@ -33,10 +34,11 @@ public class ViagemServiceImpl implements ViagemService {
     }
 
     @Override
-    public List<Viagem> getAllViagens() {
-        return viagemRepository.findAll();
-    }
-
+    public List<ViagemDto> getAllViagensDto() {
+        return viagemRepository.findAll().stream()
+                .map(this::paraDto)
+                .collect(Collectors.toList());
+}
     @Override
     public ViagemDto getViagemById(Long id) {
         return viagemRepository.findById(id)

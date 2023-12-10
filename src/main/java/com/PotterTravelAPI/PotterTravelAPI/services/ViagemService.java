@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ViagemService {
 
-    List<Viagem> getAllViagens();
+    List<ViagemDto> getAllViagensDto();
 
     ViagemDto getViagemById(Long id);
 

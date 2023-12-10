@@ -27,9 +27,9 @@ public class ViagemController {
         return viagemService.saveViagem(viagemDto);
     }
 
-    @GetMapping("/all")
-    public List<Viagem> getAllViagem() {
-        return viagemService.getAllViagens();
+    @GetMapping()
+    public List<ViagemDto> getAllViagem() {
+        return viagemService.getAllViagensDto();
     }
     @GetMapping("/{id}")
     public ResponseEntity<ViagemDto> getViagemById(@PathVariable Long id) {
