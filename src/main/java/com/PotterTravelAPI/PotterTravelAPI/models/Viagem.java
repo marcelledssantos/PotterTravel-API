@@ -3,24 +3,24 @@ package com.PotterTravelAPI.PotterTravelAPI.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name = "viagens")
 public class Viagem {
 
-    @Getter
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
-
-
     private Cliente cliente;
 
     private String origem;
@@ -50,61 +50,22 @@ public class Viagem {
         this.hotel = hotel;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
+    public Viagem(Cliente cliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
         this.cliente = cliente;
-    }
-
-    public String getOrigem() {
-        return origem;
-    }
-
-    public void setOrigem(String origem) {
         this.origem = origem;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
         this.destino = destino;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) { this.data = data;}
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
+        this.data = data;
         this.horario = horario;
-    }
-
-    public String getCiaAerea() {
-        return ciaAerea;
-    }
-
-    public void setCiaAerea(String ciaAerea) {
         this.ciaAerea = ciaAerea;
+        this.hotel = hotel;
     }
 
-    public String getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(String hotel) {
+    public Viagem(String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
+        this.origem = origem;
+        this.destino = destino;
+        this.data = data;
+        this.horario = horario;
+        this.ciaAerea = ciaAerea;
         this.hotel = hotel;
     }
 }

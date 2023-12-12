@@ -1,13 +1,10 @@
 package com.PotterTravelAPI.PotterTravelAPI.servicesImpl;
 
-import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.Dto.ViagemDto;
-import com.PotterTravelAPI.PotterTravelAPI.config.ModelMapperConfig;
-import com.PotterTravelAPI.PotterTravelAPI.models.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.models.Viagem;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ViagemRepository;
+import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
 import com.PotterTravelAPI.PotterTravelAPI.services.ViagemService;
-import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +20,11 @@ public class ViagemServiceImpl implements ViagemService {
     private ViagemRepository viagemRepository;
 
     @Autowired
+    private ClienteService clienteService;
+
+    @Autowired
     private ModelMapper mapper;
+
 
     private ViagemDto paraDto(Viagem viagem) {
         return mapper.map(viagem, ViagemDto.class);
@@ -49,6 +50,7 @@ public class ViagemServiceImpl implements ViagemService {
 
     @Override
     public ViagemDto saveViagem(ViagemDto viagemDto) {
+        clienteService.getClienteById(viagemDto.getIdCliente());
         Viagem viagemParaSalvar = paraViagem(viagemDto);
         Viagem viagemSalva = viagemRepository.save(viagemParaSalvar);
         return paraDto(viagemSalva);

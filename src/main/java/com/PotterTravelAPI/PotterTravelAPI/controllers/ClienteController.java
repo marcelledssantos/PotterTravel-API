@@ -2,9 +2,6 @@ package com.PotterTravelAPI.PotterTravelAPI.controllers;
 
 import com.PotterTravelAPI.PotterTravelAPI.Dto.ClienteDto;
 import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +20,9 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping()
-    public ClienteDto createCliente(@RequestBody ClienteDto clienteDto) {
-        return clienteService.saveCliente(clienteDto);
+    public ResponseEntity<ClienteDto> createCliente(@RequestBody ClienteDto clienteDto) {
+         ClienteDto clienteSalvo = clienteService.saveCliente(clienteDto);
+        return ResponseEntity.ok(clienteSalvo);
     }
 
     @GetMapping()
@@ -38,7 +36,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteDto);
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<ClienteDto> updateCliente(@PathVariable Long id, @RequestBody ClienteDto clienteDto) {
         ClienteDto clienteAtualizado = clienteService.updateCliente(id, clienteDto);
         return new ResponseEntity<>(clienteAtualizado, HttpStatus.OK);
