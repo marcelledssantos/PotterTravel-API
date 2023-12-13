@@ -1,6 +1,6 @@
 # PotterTravel
 
-API para uma agência de viagens fictícia do bootcamp Recode pro 2023, onde os usuários podem cadastrar destinos de viagem, listar, atualizar e excluir.
+API para uma agência de viagens fictícia do bootcamp Recode pro 2023, onde os usuários poderão cadastrar destinos de viagem, listar, atualizar e excluir.
 
 Tecnologias utilizadas:
  Java Spring Boot
