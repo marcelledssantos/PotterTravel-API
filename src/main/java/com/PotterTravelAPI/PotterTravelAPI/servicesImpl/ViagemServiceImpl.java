@@ -1,9 +1,10 @@
 package com.PotterTravelAPI.PotterTravelAPI.servicesImpl;
 
 import com.PotterTravelAPI.PotterTravelAPI.Dto.ViagemDto;
+import com.PotterTravelAPI.PotterTravelAPI.models.Cliente;
 import com.PotterTravelAPI.PotterTravelAPI.models.Viagem;
+import com.PotterTravelAPI.PotterTravelAPI.repositories.ClienteRepository;
 import com.PotterTravelAPI.PotterTravelAPI.repositories.ViagemRepository;
-import com.PotterTravelAPI.PotterTravelAPI.services.ClienteService;
 import com.PotterTravelAPI.PotterTravelAPI.services.ViagemService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ViagemServiceImpl implements ViagemService {
     private ViagemRepository viagemRepository;
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteRepository clienteRepository;
 
     @Autowired
     private ModelMapper mapper;
@@ -50,7 +51,6 @@ public class ViagemServiceImpl implements ViagemService {
 
     @Override
     public ViagemDto saveViagem(ViagemDto viagemDto) {
-        clienteService.getClienteById(viagemDto.getIdCliente());
         Viagem viagemParaSalvar = paraViagem(viagemDto);
         Viagem viagemSalva = viagemRepository.save(viagemParaSalvar);
         return paraDto(viagemSalva);
@@ -73,4 +73,17 @@ public class ViagemServiceImpl implements ViagemService {
         viagemRepository.deleteById(id);
     }
 
+    @Override
+    public void addRelacao(Long viagemId, Long clienteId) {
+
+        Viagem viagem = viagemRepository.findById(viagemId).orElseThrow(() -> new RuntimeException("ID: " + viagemId + "Não encontrado!"));
+        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("ID: " + clienteId + "Não encontrado!"));
+
+        if (viagem != null && cliente != null) {
+            viagem.getClientes().add(cliente);
+            cliente.getViagem().add(viagem);
+            viagemRepository.save(viagem);
+            clienteRepository.save(cliente);
+        }
+    }
 }

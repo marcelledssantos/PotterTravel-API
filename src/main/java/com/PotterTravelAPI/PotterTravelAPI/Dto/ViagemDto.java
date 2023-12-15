@@ -14,10 +14,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ViagemDto {
+
     @JsonIgnore
     private Long id;
-
-    private Long idCliente;
 
     private String origem;
 
@@ -31,8 +30,7 @@ public class ViagemDto {
 
     private String hotel;
 
-    public ViagemDto(Long idCliente, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
-        this.idCliente = idCliente;
+    public ViagemDto(String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel) {
         this.origem = origem;
         this.destino = destino;
         this.data = data;

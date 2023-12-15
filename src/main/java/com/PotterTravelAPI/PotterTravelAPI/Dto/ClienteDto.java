@@ -12,8 +12,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ClienteDto {
 
+
     @JsonIgnore
     private Long id;
+
     private String nome;
 
     private String cpf;
@@ -32,3 +34,4 @@ public class ClienteDto {
         this.senha = senha;
     }
 }
+

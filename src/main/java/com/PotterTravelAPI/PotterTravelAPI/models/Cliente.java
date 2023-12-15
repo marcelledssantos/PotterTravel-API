@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -22,8 +23,8 @@ public class Cliente {
     private String cpf;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
-    private Set<Viagem> viagens;
+    @ManyToMany(mappedBy = "clientes", fetch = FetchType.EAGER)
+    private Set<Viagem> viagem = new HashSet<>();
     private String telefone;
     private String email;
     private String senha;
