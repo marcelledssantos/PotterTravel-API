@@ -18,6 +18,6 @@ public interface ViagemService {
     void deleteById(Long id);
 
 
-    void addRelacao(Long viagemId, Long clienteId);
+    void comprarPacote(Long viagemId, Long clienteId);
 
 }

@@ -74,7 +74,7 @@ public class ViagemServiceImpl implements ViagemService {
     }
 
     @Override
-    public void addRelacao(Long viagemId, Long clienteId) {
+    public void comprarPacote(Long viagemId, Long clienteId) {
 
         Viagem viagem = viagemRepository.findById(viagemId).orElseThrow(() -> new RuntimeException("ID: " + viagemId + "Não encontrado!"));
         Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("ID: " + clienteId + "Não encontrado!"));

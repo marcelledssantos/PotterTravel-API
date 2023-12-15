@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "Clientes", description = "CRUD")
+@Tag(name = "Cliente", description = "CRUD")
 @RestController
 @RequestMapping("/clientes")
 

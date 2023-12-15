@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Tag(name = "Relação Cliente Viagem")
-@RequestMapping("/relacao")
+@Tag(name = "ConfirmaçãoCompra")
+@RequestMapping()
 public class ViagemClienteController {
 
     @Autowired
     private ViagemService viagemService;
-    @PostMapping("/addRelacao")
-    public ResponseEntity<String> addRelacao(@RequestBody ClienteViagemDto clienteViagemDTO){
-        viagemService.addRelacao(clienteViagemDTO.getViagemId(), clienteViagemDTO.getClienteId());
+
+    @PostMapping("/comprar")
+    public ResponseEntity<String> comprarPacote(@RequestBody ClienteViagemDto clienteViagemDTO) {
+        viagemService.comprarPacote(clienteViagemDTO.getViagemId(), clienteViagemDTO.getClienteId());
 
         return new ResponseEntity<>("Compra realizada com sucesso!", HttpStatus.OK);
     }

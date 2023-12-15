@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "Viagens", description = "CRUD")
+@Tag(name = "Viagem", description = "CRUD")
 @RestController
 @RequestMapping("/viagens")
 public class ViagemController {
