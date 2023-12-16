@@ -38,15 +38,14 @@ public class Viagem {
 
     private String hotel;
 
-    private String precoPacote;
+    private Double precoPacote;
 
     private String formaPagamento;
-
 
     public Viagem() {
     }
 
-    public Viagem(Long id, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, String precoPacote, String formaPagamento) {
+    public Viagem(Long id, String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, Double precoPacote, String formaPagamento) {
         this.id = id;
         this.origem = origem;
         this.destino = destino;
@@ -59,7 +58,7 @@ public class Viagem {
 
     }
 
-    public Viagem(String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, String precoPacote, String formaPagamento) {
+    public Viagem(String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, Double precoPacote, String formaPagamento) {
         this.origem = origem;
         this.destino = destino;
         this.data = data;

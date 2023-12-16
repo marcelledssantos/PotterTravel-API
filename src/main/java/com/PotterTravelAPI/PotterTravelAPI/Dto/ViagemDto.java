@@ -30,12 +30,12 @@ public class ViagemDto {
 
     private String hotel;
 
-    private String precoPacote;
+    private Double precoPacote;
 
     private String formaPagamento;
 
 
-    public ViagemDto(String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, String precoPacote, String formaPagamento) {
+    public ViagemDto(String origem, String destino, LocalDate data, String horario, String ciaAerea, String hotel, Double precoPacote, String formaPagamento) {
         this.origem = origem;
         this.destino = destino;
         this.data = data;

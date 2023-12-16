@@ -35,6 +35,7 @@ public class ViagemServiceImpl implements ViagemService {
         return mapper.map(viagemDto, Viagem.class);
     }
 
+
     @Override
     public List<ViagemDto> getAllViagensDto() {
         return viagemRepository.findAll().stream()
